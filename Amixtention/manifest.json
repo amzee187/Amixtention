@@ -1,0 +1,8 @@
+{
+    "manifest_version" : 3,
+    "name" : "Amixtention",
+    "version" : "5.0",
+    "chrome_url_overrides" : { "newtab" : "index.html" },
+    "permissions" : [ "tabs" ],
+    "icons" : { "256" : "./images/icon.png" }
+}

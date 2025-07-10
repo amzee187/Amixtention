@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fa-ir">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-image: url('https://picsum.photos/1600/900');
+            font-family: Vazirmatn, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+        }
+        .profile img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 20px;
+            padding: 5px 10px;
+            width: 70%;
+        }
+        .search-bar form {
+            display: flex;
+            width: 100%;
+        }
+        .search-bar input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 14px;
+            font-family: Vazirmatn, sans-serif;
+        }
+        .search-bar img {
+            width: 20px;
+            height: 20px;
+        }
+        .apps {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 20px;
+        }
+        .app {
+            text-align: center;
+        }
+        .app img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 5px;
+        }
+        .app a {
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="profile">
+                <img src="./images/prof.png" alt="Profile">
+                <div style="color: white; font-family: Vazirmatn, sans-serif;">
+                    <div id="date" style="font-size: 12px;"></div>
+                    <div id="time" style="font-size: 12px;"></div>
+                </div>
+            </div>
+            <div class="search-bar">
+                <form action="https://www.google.com/search" method="get">
+                    <img src="./images/google.png" alt="Google">
+                    <input type="text" name="q" placeholder="Enter search...">
+                </form>
+                <img src="./images/search.png" alt="Search" style="margin-left: 5px;">
+            </div>
+            <div style="color: white;">Apps</div>
+        </div>
+        <div class="apps">
+            <div class="app"><a href="https://digiato.com"><img src="./images/digiato.png" alt="Digiato"><br>Digiato</a></div>
+            <div class="app"><a href="https://zoomg.ir"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0r4Iuw5LQ03q_haoEagemcowIC8pS02I2_A&s" alt="Zoomg"><br>Zoomg</a></div>
+            <div class="app"><a href="https://vigiato.net"><img src="./images/vigiato.png" alt="Vigiato"><br>Vigiato</a></div>
+            <div class="app"><a href="https://fotmob.com"><img src="./images/fotmob.png" alt="FotMob"><br>FotMob</a></div>
+            <div class="app"><a href="https://football360.ir"><img src="./images/football360.png" alt="Football360"><br>Football360</a></div>
+            <div class="app"><a href="https://varzesh3.com"><img src="./images/varzesh3.png" alt="Varzesh3"><br>Varzesh3</a></div>
+            <div class="app"><a href="https://www.youtube.com"><img src="./images/youtube.png" alt="Youtube"><br>Youtube</a></div>
+            <div class="app"><a href="https://mail.google.com"><img src="./images/gmail.png" alt="Gmail"><br>Gmail</a></div>
+            <div class="app"><a href="https://drive.google.com"><img src="./images/drive.png" alt="Google Drive"><br>Google Drive</a></div>
+            <div class="app"><a href="https://castbox.fm"><img src="./images/castbox.png" alt="Castbox"><br>Castbox</a></div>
+            <div class="app"><a href="https://gamefa.com"><img src="./images/gamefa.png" alt="GameFa"><br>GameFa</a></div>
+            <div class="app"><a href="https://zoomit.ir"><img src="./images/zoomit.png" alt="Zoomit"><br>Zoomit</a></div>
+            <div class="app"><a href="https://translate.google.com"><img src="./images/translate.png" alt="Google Translate"><br>Google Translate</a></div>
+            <div class="app"><a href="https://keep.google.com"><img src="./images/keep.png" alt="Google Keep"><br>Google Keep</a></div>
+            <div class="app"><a href="https://app.diagrams.net/"><img src="./images/draw.png" alt="Google Draw"><br>Google Draw</a></div>
+            <div class="app"><a href="https://docs.google.com/spreadsheets"><img src="./images/sheets.png" alt="Goolge Sheet"><br>Goolge Sheet</a></div>
+            <div class="app"><a href="https://docs.google.com/presentation"><img src="./images/slides.png" alt="Google Slides"><br>Google Slides</a></div>
+            <div class="app"><a href="https://docs.google.com/"><img src="./images/doc.png" alt="Google Doc"><br>Google Doc</a></div>
+            <div class="app"><a href="https://calendar.google.com"><img src="./images/calendar.png" alt="Google Calendar"><br>Google Calendar</a></div>
+            <div class="app"><a href="https://app.todoist.com/app/"><img src="./images/todoist.png" alt="Todoist"><br>Todoist</a></div>
+            <div class="app"><a href="https://app.classino.com/newpanel/dashboard"><img src="./images/classino.png" alt="Classino"><br>Classino</a></div>
+            <div class="app"><a href="https://chess.com"><img src="./images/chess.png" alt="Chess"><br>Chess</a></div>
+            <div class="app"><a href="https://digikala.com"><img src="./images/digikala.png" alt="Digikala"><br>Digikala</a></div>
+            <div class="app"><a href="https://github.com"><img src="./images/github.png" alt="GitHub"><br>GitHub</a></div>
+            <div class="app"><a href="https://mega.io/"><img src="./images/mega.png" alt="Mega"><br>Mega</a></div>
+            <div class="app"><a href="https://www.dropbox.com/"><img src="./images/dropbox.png" alt="DropBox"><br>DropBox</a></div>
+            <div class="app"><a href="https://chromewebstore.google.com/"><img src="./images/store.png" alt="Chrome Web Store"><br>Chrome Web Store</a></div>
+            <div class="app"><a href="chrome://extensions"><img src="./images/extensions.png" alt="Chrome Extentions"><br>Chrome Extentions</a></div>
+            <div class="app"><a href="https://gemini.google.com/"><img src="./images/gemini.png" alt="Gemini"><br>Gemini</a></div>
+            <div class="app"><a href="https://chatgpt.com"><img src="./images/chatgpt.png" alt="Chat GPT"><br>Chat GPT</a></div>
+            <div class="app"><a href="https://grok.com/"><img src="./images/grok.png" alt="Grok"><br>Grok</a></div>
+            <div class="app"><a href="https://claude.ai"><img src="./images/claude.png" alt="Claude"><br>Claude</a></div>
+            <div class="app"><a href="https://twitch.tv"><img src="./images/twitch.png" alt="Twitch"><br>Twitch</a></div>
+            <div class="app"><a href="https://maktabkhooneh.org/"><img src="./images/maktabkhoone.png" alt="Maktabkhooneh"><br>Maktabkhooneh</a></div>
+            <div class="app"><a href="https://codeyad.com/"><img src="./images/codeyad.png" alt="Codeyad"><br>Codeyad</a></div>
+        </div>
+    </div>
+    <script>
+        const dateElement = document.getElementById('date');
+        const timeElement = document.getElementById('time');
+
+        function updateDateTime() {
+            const newDate = new Date();
+            const persianDate = newDate.toLocaleDateString('fa-IR', { weekday: "long", day: "2-digit", month: "long" });
+            const time = newDate.toLocaleTimeString('fa-IR', { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+            dateElement.textContent = persianDate;
+            timeElement.textContent = time;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
