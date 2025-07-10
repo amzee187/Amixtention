@@ -16,7 +16,7 @@
    div class="apps"
 4. در زیر این نوشته چند خط کد وجود دارد که دسترسی سریع (Quick Access) می‌باشد به شکل زیر آنها را شخصی سازی کنید:
 
-   <img src="/ex.png" alt=" " width="720" height="1280">
+   <img src="/ex.PNG" alt=" " width="720" height="1280">
 5. در بخش Site Link لینک سایت، Site Name اسم سایت، Logo Address مکان لوگو که می‌تواند در پوشه images در Amixtention باشد و یا لینک باشد (نکته مهم: لوگو باید با پسوند فایل همراه باشد مثل logo.png)
 6. لوگو دلخواه و یا پروفایل ایمیل خود را با نام prof.png در پوشه images در Amixtention قرار دهید
 
