@@ -1,5 +1,5 @@
-# Am-tab
-<img src="/pic.png" alt=" " width="720" height="1280">
+# Amixtention an advanced "New Tab"
+<img align="center" src="/pic.png" alt=" " width="720" height="1280">
 
 ## مراحل نصب:
 1. ابتدا فایل‌ها را با کلیک روی Code و سپس Download ZIP دانلود کنید
