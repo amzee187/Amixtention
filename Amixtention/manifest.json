@@ -1,8 +1,21 @@
 {
-    "manifest_version" : 3,
-    "name" : "Amixtention",
-    "version" : "5.0",
-    "chrome_url_overrides" : { "newtab" : "index.html" },
-    "permissions" : [ "tabs" ],
-    "icons" : { "256" : "./images/icon.png" }
+  "manifest_version": 3,
+  "name": "Site Manager",
+  "version": "6.0",
+  "description": "A beautiful site management extension",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' data: https:;"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
 }
