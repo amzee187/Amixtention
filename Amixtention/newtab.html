@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Manager</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazir', Arial, sans-serif;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-image: url('https://picsum.photos/1600/900');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(20px);
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 0 40px;
+        }
+
+        .logo-time {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-placeholder {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .time-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .time {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .date {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-item {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .search-box {
+            width: 600px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .search-icon {
+            width: 20px;
+            height: 20px;
+            background: #333;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .search-icon::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 2px;
+            background: #333;
+            transform: rotate(45deg);
+            right: -3px;
+            bottom: -1px;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-family: 'Vazir', Arial, sans-serif;
+            background: transparent;
+            direction: rtl;
+        }
+
+        .search-input::placeholder {
+            color: #999;
+            direction: rtl;
+        }
+
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .site-item {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: white;
+        }
+
+        .site-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .site-item.add-new {
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .site-item.add-new:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px dashed rgba(255, 255, 255, 0.8);
+        }
+
+        .site-icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+            opacity: 0.8;
+        }
+
+        .site-favicon {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+        }
+
+        .site-name {
+            font-size: 9px;
+            text-align: center;
+            font-weight: 500;
+            opacity: 0.9;
+            line-height: 1.1;
+            max-width: 70px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 0, 0, 0.7);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .site-item:hover .delete-btn {
+            opacity: 1;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal h3 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: 'Vazir', Arial, sans-serif;
+            direction: rtl;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Vazir', Arial, sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a6fd8;
+        }
+
+        .btn-secondary {
+            background: #ccc;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #bbb;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-input-label {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .file-input-label:hover {
+            background: #e0e0e0;
+            border-color: #999;
+        }
+
+        @media (max-width: 1200px) {
+            .sites-grid {
+                grid-template-columns: repeat(7, 1fr);
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .sites-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .sites-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .sites-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+                padding: 0 20px;
+            }
+            
+            .search-box {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-time">
+                <div class="logo" onclick="uploadLogo()">
+                    <div class="logo-placeholder" id="logoPlaceholder">🌟</div>
+                    <img id="logoImage" style="display: none;" />
+                </div>
+                <div class="time-info">
+                    <div class="time" id="currentTime">۴:۰۵ PM</div>
+                    <div class="date" id="currentDate">یکشنبه، ۲۳ شهریور</div>
+                </div>
+            </div>
+            <div class="nav">
+                <div class="nav-item">Applications</div>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <div class="search-icon"></div>
+                <input type="text" class="search-input" placeholder="جستجو..." id="searchInput" />
+            </div>
+        </div>
+
+        <div class="sites-grid" id="sitesGrid">
+            <!-- Sites will be populated here -->
+        </div>
+    </div>
+
+    <!-- Modal for adding new site -->
+    <div class="modal" id="addSiteModal">
+        <div class="modal-content">
+            <h3>افزودن سایت جدید</h3>
+            <form id="addSiteForm">
+                <div class="form-group">
+                    <label for="siteName">نام سایت:</label>
+                    <input type="text" id="siteName" required />
+                </div>
+                <div class="form-group">
+                    <label for="siteUrl">آدرس سایت:</label>
+                    <input type="url" id="siteUrl" required placeholder="https://example.com" />
+                </div>
+                <div class="form-group">
+                    <label>آیکون سایت (اختیاری):</label>
+                    <input type="file" id="siteIcon" accept="image/*" class="file-input" />
+                    <label for="siteIcon" class="file-input-label">
+                        انتخاب فایل تصویر
+                    </label>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">افزودن</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">انصراف</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <input type="file" id="logoInput" accept="image/*" style="display: none;" />
+
+    <script src="script.js"></script>
+</body>
+</html>
