@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Site Manager",
-  "version": "6.0",
+  "version": "6.5",
   "description": "A beautiful site management extension",
   "chrome_url_overrides": {
     "newtab": "newtab.html"
@@ -19,3 +19,4 @@
     "128": "icon128.png"
   }
 }
+
